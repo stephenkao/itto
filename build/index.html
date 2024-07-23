@@ -103,14 +103,14 @@
         const minuteCount = now.getMinutes() - birthday.getMinutes();
         const secondCount = now.getSeconds() - birthday.getSeconds();
 
-        const updatedText = [
+        const updatedText = new Intl.ListFormat().format([
           [yearCount, pluralizeIfNeeded('year', yearCount)],
           [monthCount, pluralizeIfNeeded('month', monthCount)],
           [dayCount, pluralizeIfNeeded('day', dayCount)],
           [hourCount, pluralizeIfNeeded('hour', hourCount)],
           [minuteCount, pluralizeIfNeeded('minute', minuteCount)],
           [secondCount, pluralizeIfNeeded('second', secondCount)],
-        ].map((tuple) => tuple.join(' ')).join(', ');
+        ].map((tuple) => tuple.join(' ')));
 
         countupElement.textContent = updatedText;
         window.setTimeout(updateCountup, 1000);

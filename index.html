@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+
+    <meta name="title" content="Is Trump Too Old?">
+    <meta name="description" content="Time is not just a measure of hours and minutes — it's a catalyst for deep reflection. Is Donald Trump's age a concern? This question invites you to contemplate the impact of age in leadership and public life.">
+    <meta name="keywords" content="trump,aging,senility">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta property="og:title" content="Is Trump Too Old" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://istrumptooold.com" />
+
+    <title>Is Trump Too Old?</title>
+
+    <style>
+      html,
+      body {
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      main {
+        max-width: 800px;
+        height: 100vh;
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 64px;
+      }
+
+      p {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      #countup {
+        color: red;
+        font-weight: bold;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1>Is Trump Too Old?</h1>
+        <p>Donald J. Trump is <span id="countup"></span> old.</p>
+        <p>The average life expectancy of an American man is 73.5 years.</p>
+      </div>
+    </main>
+
+    <script type="text/javascript">
+      function pluralizeIfNeeded(stemmedWord, count) {
+        if (count === 1) {
+          return stemmedWord;
+        }
+
+        return `${stemmedWord}s`;
+      }
+
+      const birthday = new Date(1946, 5, 14);
+      const countupElement = document.querySelector('#countup');
+
+      function updateCountup() {
+        const now = new Date();
+        const yearCount = now.getFullYear() - birthday.getFullYear();
+        const monthCount = now.getMonth() - birthday.getMonth();
+        const dayCount = now.getDate() - birthday.getDate();
+        const hourCount = now.getHours() - birthday.getHours();
+        const minuteCount = now.getMinutes() - birthday.getMinutes();
+        const secondCount = now.getSeconds() - birthday.getSeconds();
+
+        const updatedText = [
+          [yearCount, pluralizeIfNeeded('year', yearCount)],
+          [monthCount, pluralizeIfNeeded('month', monthCount)],
+          [dayCount, pluralizeIfNeeded('day', dayCount)],
+          [hourCount, pluralizeIfNeeded('hour', hourCount)],
+          [minuteCount, pluralizeIfNeeded('minute', minuteCount)],
+          [secondCount, pluralizeIfNeeded('second', secondCount)],
+        ].map((tuple) => tuple.join(' ')).join(', ');
+
+        countupElement.textContent = updatedText;
+        window.setTimeout(updateCountup, 1000);
+      }
+
+      updateCountup();
+    </script>
+  </body>
+</html>

@@ -21,11 +21,13 @@
     <style>
       html,
       body {
+        padding: 0 20px;
+        margin: 0;
+
         font-family: 'Courier New', Courier, monospace;
       }
 
       main {
-        max-width: 800px;
         height: 100vh;
         margin: 0 auto;
 
@@ -38,18 +40,37 @@
       }
 
       h1 {
-        font-size: 64px;
+        font-size: 30px;
       }
 
       p {
-        font-size: 20px;
-        text-align: center;
+        font-size: 16px;
       }
 
       #countup {
         color: red;
         font-weight: bold;
-        font-size: 30px;
+        font-size: 20px;
+      }
+
+      @media screen and (min-width: 768px) {
+        main {
+          max-width: 800px;
+        }
+
+        h1 {
+          font-size: 64px;
+        }
+
+        p {
+          font-size: 20px;
+        }
+
+        #countup {
+          color: red;
+          font-weight: bold;
+          font-size: 30px;
+        }
       }
     </style>
   </head>

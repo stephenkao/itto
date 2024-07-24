@@ -19,6 +19,10 @@
     <title>Is Trump Too Old?</title>
 
     <style>
+      html {
+        font-size: 62.5%;
+      }        
+
       html,
       body {
         padding: 0 20px;
@@ -27,7 +31,12 @@
         font-family: 'Courier New', Courier, monospace;
       }
 
+      a {
+        text-decoration: none;
+      }
+
       main {
+        max-width: 800px;
         height: 100vh;
         margin: 0 auto;
 
@@ -35,16 +44,15 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-
-        text-align: center;
       }
 
       h1 {
-        font-size: 36px;
+        font-size: 7.5rem;
       }
 
       p {
-        font-size: 20px;
+        font-size: 3.8rem;
+        line-height: 1.4;
       }
 
       #countup {
@@ -52,23 +60,23 @@
         font-weight: bold;
       }
 
-      @media screen and (min-width: 768px) {
-        main {
-          max-width: 800px;
+      @media only screen and (min-device-width: 768px) {
+        h1 {
+          font-size: 6.4rem;
         }
 
-        h1 {
-          font-size: 64px;
+        main {
+          text-align: center;
         }
 
         p {
-          font-size: 20px;
+          font-size: 2rem;
         }
 
         #countup {
           color: red;
           font-weight: bold;
-          font-size: 30px;
+          font-size: 3rem;
         }
       }
     </style>
@@ -78,7 +86,7 @@
       <div>
         <h1>Is Trump Too Old?</h1>
         <p>Donald J. Trump is <span id="countup"></span> old.</p>
-        <p>The average life expectancy of an American man is 73.5 years.</p>
+        <p>The average life expectancy of an American man is 74.8<a target="blank" rel="noreferrer noopener" href="https://www.cdc.gov/nchs/data/databriefs/db492.pdf"><sup>[1]</sup></a> years.</p>
       </div>
     </main>
 

@@ -111,7 +111,7 @@
         const minuteCount = now.getMinutes() - birthday.getMinutes();
         const secondCount = now.getSeconds() - birthday.getSeconds();
 
-        const updatedText = new Intl.ListFormat().format([
+        const updatedText = new Intl.ListFormat('en-US').format([
           [yearCount, pluralizeIfNeeded('year', yearCount)],
           [monthCount, pluralizeIfNeeded('month', monthCount)],
           [dayCount, pluralizeIfNeeded('day', dayCount)],

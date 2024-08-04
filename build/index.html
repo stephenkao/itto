@@ -18,10 +18,12 @@
 
     <title>Is Trump Too Old?</title>
 
+    <script src=" https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
+
     <style>
       html {
         font-size: 62.5%;
-      }        
+      }
 
       html,
       body {
@@ -99,25 +101,29 @@
         return `${stemmedWord}s`;
       }
 
-      const birthday = new Date(1946, 5, 14);
+      const birthday = window.luxon.DateTime.fromISO('1946-06-14');
       const countupElement = document.querySelector('#countup');
 
       function updateCountup() {
-        const now = new Date();
-        const yearCount = now.getFullYear() - birthday.getFullYear();
-        const monthCount = now.getMonth() - birthday.getMonth();
-        const dayCount = now.getDate() - birthday.getDate();
-        const hourCount = now.getHours() - birthday.getHours();
-        const minuteCount = now.getMinutes() - birthday.getMinutes();
-        const secondCount = now.getSeconds() - birthday.getSeconds();
+        const now = window.luxon.DateTime.now();
+        let {
+          years,
+          months,
+          days,
+          hours,
+          minutes,
+          seconds
+        } = now.diff(birthday, ['years', 'months', 'days', 'hours', 'minutes', 'seconds'])
+
+        seconds = Math.floor(seconds);
 
         const updatedText = new Intl.ListFormat('en-US').format([
-          [yearCount, pluralizeIfNeeded('year', yearCount)],
-          [monthCount, pluralizeIfNeeded('month', monthCount)],
-          [dayCount, pluralizeIfNeeded('day', dayCount)],
-          [hourCount, pluralizeIfNeeded('hour', hourCount)],
-          [minuteCount, pluralizeIfNeeded('minute', minuteCount)],
-          [secondCount, pluralizeIfNeeded('second', secondCount)],
+          [years, pluralizeIfNeeded('year', years)],
+          [months, pluralizeIfNeeded('month', months)],
+          [days, pluralizeIfNeeded('day', days)],
+          [hours, pluralizeIfNeeded('hour', hours)],
+          [minutes, pluralizeIfNeeded('minute', minutes)],
+          [seconds, pluralizeIfNeeded('second', seconds)],
         ].map((tuple) => tuple.join(' ')));
 
         countupElement.textContent = updatedText;
